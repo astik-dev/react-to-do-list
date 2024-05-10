@@ -1,14 +1,16 @@
-import { useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import ToDo from "./components/ToDo";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { todosReducer } from "./todosReducer";
 
 
+const todosFromLocalStorage = JSON.parse(localStorage.getItem("todos")) || [];
+
 function App() {
 
     const addTodoTextareaRef = useRef();
 
-    const [todos, dispatch] = useReducer(todosReducer, []);
+    const [todos, dispatch] = useReducer(todosReducer, todosFromLocalStorage);
 
     function addTodo() {
         if (addTodoTextareaRef.current.value == "") return;
@@ -36,6 +38,10 @@ function App() {
             })
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     return (
         <div className="wrapper">
