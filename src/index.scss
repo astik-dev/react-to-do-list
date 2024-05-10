@@ -34,7 +34,8 @@ h1 {
 
 .todo {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
     gap: 2px;
 
     textarea {
@@ -51,6 +52,14 @@ h1 {
 
         &:checked + textarea {
             text-decoration: line-through;
+        }
+    }
+
+    button {
+        background: transparent;
+
+        &:hover {
+            background: rgb(255, 32, 32);
         }
     }
 }

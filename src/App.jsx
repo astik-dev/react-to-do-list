@@ -28,6 +28,15 @@ function App() {
         }
     }
 
+    function deleteTodo(id) {
+        return () => {
+            dispatch({
+                type: "DELETE_TODO",
+                payload: id,
+            })
+        }
+    }
+
     return (
         <div className="wrapper">
             
@@ -47,6 +56,7 @@ function App() {
                         key={todo.id}
                         {...todo}
                         editTodo={editTodo(todo.id)}
+                        deleteTodo={deleteTodo(todo.id)}
                     />
                 )}
 

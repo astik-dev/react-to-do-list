@@ -1,6 +1,6 @@
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 
-const ToDo = ({isChecked, value, editTodo}) => {
+const ToDo = ({isChecked, value, editTodo, deleteTodo}) => {
     
     return (
         <div className="todo">
@@ -13,6 +13,7 @@ const ToDo = ({isChecked, value, editTodo}) => {
                 value={value}
                 onChange={(e) => editTodo({value: e.target.value})}
             />
+            <button onClick={deleteTodo}>x</button>
         </div>
     )
 };
